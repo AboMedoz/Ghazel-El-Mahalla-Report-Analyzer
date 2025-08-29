@@ -23,9 +23,9 @@ class PlotDataFrame:
 
     def plot_label(self, label):
         label_index = {
-            'Production': 3,
-            'Efficiency': 4,
-            'Availability': 5
+            'Production': 2,
+            'Efficiency': 3,
+            'Availability': 4
         }.get(label, None)
 
         # yarn_map = machine -> yarncount
@@ -53,7 +53,7 @@ class PlotDataFrame:
         )
         # production note
         if label == 'Production':
-            prod_val = self.df.loc[self.df.iloc[:, 0] == 'Total', self.df.iloc[:, 3]].iloc[0]
+            prod_val = self.df.loc[self.df.iloc[:, 0] == 'Total'].iloc[0, 2]
             plt.text(
                 x=0.95, y=0.5,
                 s=f"Actual Production: {prod_val}Kg\nTarget: 9000Kg",
