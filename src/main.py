@@ -7,11 +7,11 @@ class PlotDataFrame:
         self.df = df
         self.file_name = file_name
 
-        failed_machines = self.df.loc[self.df['State'] == 'Failure', self.df.columns[0]].astype(str).tolist()
-        offline_machines = self.df.loc[self.df['State'] == 'Offline', self.df.columns[0]].astype(str).tolist()
-        run_machines = self.df.loc[self.df['State'] == 'Run', self.df.columns[0]].astype(str).tolist()
-        service_machines = self.df.loc[self.df['State'] == 'Service', self.df.columns[0]].astype(str).tolist()
-        stop_machines = self.df.loc[self.df['State'] == 'Stop', self.df.columns[0]].astype(str).tolist()
+        failed_machines = self.df.loc[self.df.iloc[:, 13] == 'Failure', self.df.columns[0]].astype(str).tolist()
+        offline_machines = self.df.loc[self.df.iloc[:, 13] == 'Offline', self.df.columns[0]].astype(str).tolist()
+        run_machines = self.df.loc[self.df.iloc[:, 13] == 'Run', self.df.columns[0]].astype(str).tolist()
+        service_machines = self.df.loc[self.df.iloc[:, 13] == 'Service', self.df.columns[0]].astype(str).tolist()
+        stop_machines = self.df.loc[self.df.iloc[:, 13] == 'Stop', self.df.columns[0]].astype(str).tolist()
 
         self.status_text = (
             f"Failed Machines: {len(failed_machines)} "
